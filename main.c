@@ -51,10 +51,10 @@ void refillTabWithSumFromNegativeRows(int **matrix, int rows, int columns, int t
     }
 }
 
-int checkForNegativeNumbersInSelectedRow(int **matrix, int columns, int selected_row){
+bool isNegativeNumbersInSelectedRow(int **matrix, int columns, int selected_row){
     for(int i = 1; i <= columns; i++){
         if(matrix[selected_row][i] < 0){
-            return 1;
+            return true;
         }
     }
     return false;
@@ -63,7 +63,7 @@ int checkForNegativeNumbersInSelectedRow(int **matrix, int columns, int selected
 void printSumOfNegativeRows(int **matrix, int tabWithSum[], int rows, int columns){
     printf("-- Sumy liczb w wierszach, ktore zawieraja co najmniej jedna liczbe ujemna -- \n");
     for(int i = 1; i <= rows; i++){
-            if(checkForNegativeNumbersInSelectedRow(matrix, columns, i)){
+            if(isNegativeNumbersInSelectedRow(matrix, columns, i)){
                 if(tabWithSum[i] < 0){
                     printf("Suma liczb w wierszu[%i]:  %i\n", i, tabWithSum[i]);
                 } else {
